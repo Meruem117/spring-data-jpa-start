@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="log_home" value="/opt/data/project/log"/>
+
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - [%method,%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 系统日志输出 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_home}/log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 按天回滚 daily -->
+            <fileNamePattern>${log_home}/daily%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 日志最大的历史 30天 -->
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 显示形成的sql、使用的参数、结果集 -->
+    <!--
+        <logger name="java.sql" level="debug" />
+        <logger name="org.springframework.jdbc" level="debug" />
+    -->
+
+    <logger name="niit.start" level="info"/>
+
+    <root level="info">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="file"/>
+    </root>
+</configuration>
