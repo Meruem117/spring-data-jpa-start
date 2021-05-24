@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import niit.start.dao.VListDao;
-import niit.start.bean.VList;
+import niit.start.entity.VList;
 
 import javax.annotation.Resource;
 
@@ -25,7 +25,7 @@ public class LogGenerator {
     public boolean findAll() {
         List<VList> list;
         list = VListDao.findAll();
-        String[] city = {"上海", "广州", "深圳", "北京", "常州", "杭州"};
+        String[] city = {"上海", "广东", "北京", "江苏", "浙江"};
         Random random = new Random();
         boolean res = false;
         try {

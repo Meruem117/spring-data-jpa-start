@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import niit.start.dao.UListDao;
-import niit.start.bean.UList;
+import niit.start.entity.UList;
 
 import javax.annotation.Resource;
 

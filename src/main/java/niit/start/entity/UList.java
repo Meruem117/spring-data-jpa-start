@@ -1,4 +1,4 @@
-package niit.start.bean;
+package niit.start.entity;
 
 import java.io.Serializable;
 

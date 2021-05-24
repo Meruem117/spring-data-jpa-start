@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import niit.start.dao.VListDao;
-import niit.start.bean.VList;
+import niit.start.entity.VList;
 
 import javax.annotation.Resource;
 

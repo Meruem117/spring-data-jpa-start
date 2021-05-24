@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import niit.start.dao.UserDao;
-import niit.start.bean.User;
+import niit.start.entity.User;
 
 import javax.annotation.Resource;
 
