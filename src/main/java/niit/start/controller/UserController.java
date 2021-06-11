@@ -25,17 +25,49 @@ public class UserController {
         return list;
     }
 
-    @RequestMapping("/getUserByName")
-    @ResponseBody
-    public User getUserByName(String name) {
-        User user = UserDao.getUserByName(name);
-        return user;
-    }
-
     @RequestMapping("/getUserById")
     @ResponseBody
     public User getUserById(int id) {
         User user = UserDao.getUserById(id);
         return user;
+    }
+
+    @RequestMapping("/addUser")
+    @ResponseBody
+    public boolean addUser(User u) {
+//        User user = UserDao.getUserById(id);
+        return true;
+    }
+
+    @RequestMapping("/deleteUser")
+    @ResponseBody
+    public boolean deleteUserById(int id) {
+        boolean res = false;
+        try {
+            UserDao.deleteUserById(id);
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public boolean getUserById(User u) {
+        boolean res = false;
+        try {
+            User user = UserDao.getUserById(u.getId());
+            user.setName(u.getName());
+            user.setPassword(u.getPassword());
+            user.setRole(u.getRole());
+            user.setLocation(u.getLocation());
+            user.setBirthday(u.getBirthday());
+            user.setGender(u.getGender());
+            res = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }

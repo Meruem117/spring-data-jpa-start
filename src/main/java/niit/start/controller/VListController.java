@@ -40,7 +40,7 @@ public class VListController {
     @ResponseBody
     public VList getVideoByBvid(String bvid) {
         VList vlist = VListDao.getVideoByBvid(bvid);
-        log.info("{}:{} from {}", vlist.getAuthor(), vlist.getBvid(), "常州");
+        log.info("{}:{} from {}", vlist.getAuthor(), vlist.getBvid(), "江苏");
         return vlist;
     }
 

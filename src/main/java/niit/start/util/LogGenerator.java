@@ -32,7 +32,6 @@ public class LogGenerator {
             for (int i = 0; i < 100; i++) {
                 int t1 = random.nextInt(list.size());
                 int t2 = random.nextInt(city.length);
-//                System.out.print(list.get(t1).getAuthor() + ':' + list.get(t1).getBvid() + "from" + city[t2] + "\n");
                 log.info("{}:{} from {}", list.get(t1).getAuthor(), list.get(t1).getBvid(), city[t2]);
             }
             res = true;

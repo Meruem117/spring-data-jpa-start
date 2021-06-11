@@ -19,6 +19,16 @@ public class User implements Serializable {
     private int id;
     @Column(name = "name")
     private String name;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "role")
+    private String role;
+    @Column(name = "location")
+    private String location;
+    @Column(name = "birthday")
+    private String birthday;
+    @Column(name = "gender")
+    private String gender;
 
     public int getId() {
         return id;
@@ -34,5 +44,45 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

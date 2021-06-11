@@ -7,5 +7,5 @@ import niit.start.entity.User;
 public interface UserDao extends JpaRepository<User, Long> {
     User getUserById(int id);
 
-    User getUserByName(String name);
+    User deleteUserById(int id);
 }

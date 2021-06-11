@@ -16,10 +16,10 @@ public class HResult2 implements Serializable {
     @Column(name = "author")
     private String author;
     @Id
-    @Column(name = "year")
-    private String year;
-    @Column(name = "video_count")
-    private int video_count;
+    @Column(name = "tm")
+    private String tm;
+    @Column(name = "count")
+    private int count;
 
     public String getProcess_date() {
         return process_date;
@@ -29,16 +29,16 @@ public class HResult2 implements Serializable {
         return author;
     }
 
-    public String getYear() {
-        return year;
+    public String getTm() {
+        return tm;
     }
 
-    public int getVideo_count() {
-        return video_count;
+    public int getCount() {
+        return count;
     }
 }
 
 class HResult2Key implements Serializable {
     private String author;
-    private String year;
+    private String tm;
 }
