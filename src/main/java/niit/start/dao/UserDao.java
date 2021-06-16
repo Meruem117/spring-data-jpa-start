@@ -5,7 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import niit.start.entity.User;
 
 public interface UserDao extends JpaRepository<User, Long> {
-    User getUserById(int id);
+    User getUserById(Integer id);
 
-    User deleteUserById(int id);
+    User getUserByName(String name);
+
+    int deleteUserById(Integer id);
 }

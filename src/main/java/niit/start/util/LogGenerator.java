@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class LogGenerator {
 
     @RequestMapping("/generateLog")
     @ResponseBody
-    public boolean findAll() {
+    public boolean generateLog() {
         List<VList> list;
         list = VListDao.findAll();
         String[] city = {"上海", "广东", "北京", "江苏", "浙江"};
@@ -39,5 +40,12 @@ public class LogGenerator {
             log.error(e.getMessage());
         }
         return res;
+    }
+
+    @PostMapping("/addLog")
+    @ResponseBody
+    public void addLog(String author, String bvid, String location) {
+        String loc = location.split(" ")[0];
+        log.info("{}:{} from {}", author, bvid, loc);
     }
 }

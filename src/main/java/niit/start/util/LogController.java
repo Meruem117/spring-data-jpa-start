@@ -10,11 +10,35 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("api")
 public class LogController {
+
     @RequestMapping("/ls")
     @ResponseBody
-    public boolean dataGeneration(HttpServletRequest request, HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");// 解决跨域问题
-        // 使用SSH2登录远程Linux服务器，执行shell脚本
+    public boolean ls(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        String execResultStr = RemoteExecutor.getInstance().execute("ls");
+        return !"".equals(execResultStr);
+    }
+
+    @RequestMapping("/flume")
+    @ResponseBody
+    public boolean flumeToHdFS(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        String execResultStr = RemoteExecutor.getInstance().execute("ls");
+        return !"".equals(execResultStr);
+    }
+
+    @RequestMapping("/mapred")
+    @ResponseBody
+    public boolean MapReduce(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        String execResultStr = RemoteExecutor.getInstance().execute("ls");
+        return !"".equals(execResultStr);
+    }
+
+    @RequestMapping("/sqoop")
+    @ResponseBody
+    public boolean sqoopToMysql(HttpServletRequest request, HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         String execResultStr = RemoteExecutor.getInstance().execute("ls");
         return !"".equals(execResultStr);
     }

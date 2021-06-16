@@ -1,7 +1,11 @@
 package niit.start.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,47 +31,57 @@ public class UserController {
 
     @RequestMapping("/getUserById")
     @ResponseBody
-    public User getUserById(int id) {
+    public User getUserById(Integer id) {
         User user = UserDao.getUserById(id);
         return user;
     }
 
-    @RequestMapping("/addUser")
+    @RequestMapping("/getUserByName")
     @ResponseBody
-    public boolean addUser(User u) {
-//        User user = UserDao.getUserById(id);
-        return true;
+    public User getUserByName(String name) {
+        User user = UserDao.getUserByName(name);
+        return user;
     }
 
-    @RequestMapping("/deleteUser")
+    @RequestMapping("/checkUser")
     @ResponseBody
-    public boolean deleteUserById(int id) {
-        boolean res = false;
-        try {
-            UserDao.deleteUserById(id);
-            res = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return res;
+    public String checkUser(String name) {
+        User user = UserDao.getUserByName(name);
+        return user.getPassword();
     }
 
-    @RequestMapping("/updateUser")
+    @PostMapping("/addUser")
     @ResponseBody
-    public boolean getUserById(User u) {
-        boolean res = false;
-        try {
-            User user = UserDao.getUserById(u.getId());
-            user.setName(u.getName());
-            user.setPassword(u.getPassword());
-            user.setRole(u.getRole());
-            user.setLocation(u.getLocation());
-            user.setBirthday(u.getBirthday());
-            user.setGender(u.getGender());
-            res = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return res;
+    public void addUser(String name, String password, String gender, String location, String birthday) {
+        User user = new User();
+        user.setName(name);
+        user.setPassword(password);
+        user.setRole("user");
+        user.setGender(gender);
+        user.setLocation(location);
+        user.setBirthday(birthday);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        String date = df.format(new Date());
+        user.setCreated(date);
+        UserDao.save(user);
+    }
+
+    @Transactional
+    @RequestMapping("/deleteUserById")
+    @ResponseBody
+    public void deleteUserById(Integer id) {
+        UserDao.deleteUserById(id);
+    }
+
+    @PostMapping("/updateUser")
+    @ResponseBody
+    public void getUserById(Integer id, String name, String gender, String location, String birthday) {
+        User user = UserDao.getUserById(id);
+        user.setName(name);
+//        user.setPassword(password);
+        user.setGender(gender);
+        user.setLocation(location);
+        user.setBirthday(birthday);
+        UserDao.save(user);
     }
 }

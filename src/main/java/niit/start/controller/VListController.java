@@ -32,7 +32,6 @@ public class VListController {
     public List<VList> getVListByMid(String mid) {
         List<VList> list;
         list = VListDao.getVListByMid(mid);
-//        log.info("view up: {}", mid);
         return list;
     }
 
@@ -40,7 +39,6 @@ public class VListController {
     @ResponseBody
     public VList getVideoByBvid(String bvid) {
         VList vlist = VListDao.getVideoByBvid(bvid);
-        log.info("{}:{} from {}", vlist.getAuthor(), vlist.getBvid(), "江苏");
         return vlist;
     }
 

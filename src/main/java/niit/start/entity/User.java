@@ -2,11 +2,7 @@ package niit.start.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -15,8 +11,9 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;// 序列化
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "password")
@@ -29,12 +26,14 @@ public class User implements Serializable {
     private String birthday;
     @Column(name = "gender")
     private String gender;
+    @Column(name = "created")
+    private String created;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -85,4 +84,13 @@ public class User implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
 }

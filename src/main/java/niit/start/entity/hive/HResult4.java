@@ -23,6 +23,8 @@ public class HResult4 implements Serializable {
     private String title;
     @Column(name = "play")
     private int play;
+    @Column(name = "tm")
+    private String tm;
 
     public String getProcess_date() {
         return process_date;
@@ -42,5 +44,9 @@ public class HResult4 implements Serializable {
 
     public int getPlay() {
         return play;
+    }
+
+    public String getTm() {
+        return tm;
     }
 }

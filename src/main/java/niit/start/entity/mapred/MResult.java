@@ -19,6 +19,8 @@ public class MResult implements Serializable {
     private int type;
     @Column(name = "count")
     private int count;
+    @Column(name = "tm")
+    private String tm;
 
     public String getName() {
         return name;
@@ -30,5 +32,9 @@ public class MResult implements Serializable {
 
     public int getCount() {
         return count;
+    }
+
+    public String getTm() {
+        return tm;
     }
 }
