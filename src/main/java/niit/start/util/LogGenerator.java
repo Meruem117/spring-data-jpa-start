@@ -23,14 +23,14 @@ public class LogGenerator {
 
     @RequestMapping("/generateLog")
     @ResponseBody
-    public boolean generateLog() {
+    public boolean generateLog(int n) {
         List<VList> list;
         list = VListDao.findAll();
         String[] city = {"上海", "广东", "北京", "江苏", "浙江"};
         Random random = new Random();
         boolean res = false;
         try {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < n; i++) {
                 int t1 = random.nextInt(list.size());
                 int t2 = random.nextInt(city.length);
                 log.info("{}:{} from {}", list.get(t1).getAuthor(), list.get(t1).getBvid(), city[t2]);

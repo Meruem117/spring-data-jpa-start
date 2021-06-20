@@ -24,11 +24,35 @@ public class MResultController {
         return list;
     }
 
+    @RequestMapping("/getDistinctTm")
+    @ResponseBody
+    public List<String> getDistinctTm() {
+        List<String> list;
+        list = MResultDao.getDistinctTm();
+        return list;
+    }
+
     @RequestMapping("/getMResultByType")
     @ResponseBody
     public List<MResult> getMResultByType(int type) {
         List<MResult> list;
         list = MResultDao.getMResultByType(type);
         return list;
+    }
+
+    @RequestMapping("/getMResultByTypeAndTm")
+    @ResponseBody
+    public List<MResult> getMResultByTypeAndTm(int type, String tm) {
+        List<MResult> list;
+        list = MResultDao.getMResultByTypeAndTm(type, tm);
+        return list;
+    }
+
+    @RequestMapping("/getMResultByNameAndTm")
+    @ResponseBody
+    public MResult getMResultByNameAndTm(String name, String tm) {
+        MResult mr;
+        mr = MResultDao.getMResultByNameAndTm(name, tm);
+        return mr;
     }
 }
