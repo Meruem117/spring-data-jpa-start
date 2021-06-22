@@ -1,10 +1,10 @@
-package niit.start.dao;
+package niit.start.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import niit.start.entity.Up;
 
-public interface UpDao extends JpaRepository<Up, Long> {
+public interface UpRepository extends JpaRepository<Up, Long> {
 
     Up getUpById(int id);
 

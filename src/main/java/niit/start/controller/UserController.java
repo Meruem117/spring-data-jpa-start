@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import niit.start.dao.UserDao;
+import niit.start.repository.UserRepository;
 import niit.start.entity.User;
 
 import javax.annotation.Resource;
@@ -18,35 +18,35 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("api")
 public class UserController {
-    @Resource(name = "userDao")
-    private UserDao UserDao;
+    @Resource(name = "UserRepository")
+    private UserRepository UserRepository;
 
     @RequestMapping("/getUser")
     @ResponseBody
     public List<User> findAll() {
         List<User> list;
-        list = UserDao.findAll();
+        list = UserRepository.findAll();
         return list;
     }
 
     @RequestMapping("/getUserById")
     @ResponseBody
     public User getUserById(Integer id) {
-        User user = UserDao.getUserById(id);
+        User user = UserRepository.getUserById(id);
         return user;
     }
 
     @RequestMapping("/getUserByName")
     @ResponseBody
     public User getUserByName(String name) {
-        User user = UserDao.getUserByName(name);
+        User user = UserRepository.getUserByName(name);
         return user;
     }
 
     @RequestMapping("/checkUser")
     @ResponseBody
     public String checkUser(String name) {
-        User user = UserDao.getUserByName(name);
+        User user = UserRepository.getUserByName(name);
         return user.getPassword();
     }
 
@@ -63,25 +63,25 @@ public class UserController {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(new Date());
         user.setCreated(date);
-        UserDao.save(user);
+        UserRepository.save(user);
     }
 
     @Transactional
     @RequestMapping("/deleteUserById")
     @ResponseBody
     public void deleteUserById(Integer id) {
-        UserDao.deleteUserById(id);
+        UserRepository.deleteUserById(id);
     }
 
     @PostMapping("/updateUser")
     @ResponseBody
     public void getUserById(Integer id, String name, String gender, String location, String birthday) {
-        User user = UserDao.getUserById(id);
+        User user = UserRepository.getUserById(id);
         user.setName(name);
 //        user.setPassword(password);
         user.setGender(gender);
         user.setLocation(location);
         user.setBirthday(birthday);
-        UserDao.save(user);
+        UserRepository.save(user);
     }
 }

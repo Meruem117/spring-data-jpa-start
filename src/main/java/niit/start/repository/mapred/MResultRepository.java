@@ -1,4 +1,4 @@
-package niit.start.dao.mapred;
+package niit.start.repository.mapred;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface MResultDao extends JpaRepository<MResult, Long> {
+public interface MResultRepository extends JpaRepository<MResult, Long> {
     List<MResult> getMResultByType(int type);
 
     List<MResult> getMResultByTypeAndTm(int type, String tm);

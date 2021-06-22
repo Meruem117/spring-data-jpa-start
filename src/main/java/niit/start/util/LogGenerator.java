@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import niit.start.dao.VListDao;
+import niit.start.repository.VListRepository;
 import niit.start.entity.VList;
 
 import javax.annotation.Resource;
@@ -18,14 +18,14 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("api")
 public class LogGenerator {
-    @Resource(name = "VListDao")
-    private VListDao VListDao;
+    @Resource(name = "VListRepository")
+    private VListRepository VListRepository;
 
     @RequestMapping("/generateLog")
     @ResponseBody
     public boolean generateLog(int n) {
         List<VList> list;
-        list = VListDao.findAll();
+        list = VListRepository.findAll();
         String[] city = {"上海", "广东", "北京", "江苏", "浙江"};
         Random random = new Random();
         boolean res = false;

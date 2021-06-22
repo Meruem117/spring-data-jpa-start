@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import niit.start.dao.UpDao;
+import niit.start.repository.UpRepository;
 import niit.start.entity.Up;
 
 import javax.annotation.Resource;
@@ -16,14 +16,14 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("api")
 public class UpController {
-    @Resource(name = "upDao")
-    private UpDao UpDao;
+    @Resource(name = "UpRepository")
+    private UpRepository UpRepository;
 
     @RequestMapping("/getUp")
     @ResponseBody
     public List<Up> findAll() {
         List<Up> list;
-        list = UpDao.findAll();
+        list = UpRepository.findAll();
         return list;
     }
 
@@ -34,23 +34,23 @@ public class UpController {
         up.setId(id);
         up.setMid(mid);
         up.setName(name);
-        UpDao.save(up);
+        UpRepository.save(up);
     }
 
     @Transactional
     @RequestMapping("/deleteUp")
     @ResponseBody
     public void deleteUp(int id) {
-        UpDao.deleteById(id);
+        UpRepository.deleteById(id);
     }
 
     @PostMapping("/updateUp")
     @ResponseBody
     public void updateUp(int id, String mid, String name) {
-        Up up = UpDao.getUpById(id);
+        Up up = UpRepository.getUpById(id);
         up.setId(id);
         up.setMid(mid);
         up.setName(name);
-        UpDao.save(up);
+        UpRepository.save(up);
     }
 }

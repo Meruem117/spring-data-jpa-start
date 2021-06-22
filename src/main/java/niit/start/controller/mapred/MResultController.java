@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import niit.start.dao.mapred.MResultDao;
+import niit.start.repository.mapred.MResultRepository;
 import niit.start.entity.mapred.MResult;
 
 import javax.annotation.Resource;
@@ -13,14 +13,14 @@ import java.util.List;
 @RestController
 @RequestMapping("api")
 public class MResultController {
-    @Resource(name = "MResultDao")
-    private MResultDao MResultDao;
+    @Resource(name = "MResultRepository")
+    private MResultRepository MResultRepository;
 
     @RequestMapping("/getMResult")
     @ResponseBody
     public List<MResult> findAll() {
         List<MResult> list;
-        list = MResultDao.findAll();
+        list = MResultRepository.findAll();
         return list;
     }
 
@@ -28,7 +28,7 @@ public class MResultController {
     @ResponseBody
     public List<String> getDistinctTm() {
         List<String> list;
-        list = MResultDao.getDistinctTm();
+        list = MResultRepository.getDistinctTm();
         return list;
     }
 
@@ -36,7 +36,7 @@ public class MResultController {
     @ResponseBody
     public List<MResult> getMResultByType(int type) {
         List<MResult> list;
-        list = MResultDao.getMResultByType(type);
+        list = MResultRepository.getMResultByType(type);
         return list;
     }
 
@@ -44,7 +44,7 @@ public class MResultController {
     @ResponseBody
     public List<MResult> getMResultByTypeAndTm(int type, String tm) {
         List<MResult> list;
-        list = MResultDao.getMResultByTypeAndTm(type, tm);
+        list = MResultRepository.getMResultByTypeAndTm(type, tm);
         return list;
     }
 
@@ -52,7 +52,7 @@ public class MResultController {
     @ResponseBody
     public MResult getMResultByNameAndTm(String name, String tm) {
         MResult mr;
-        mr = MResultDao.getMResultByNameAndTm(name, tm);
+        mr = MResultRepository.getMResultByNameAndTm(name, tm);
         return mr;
     }
 }

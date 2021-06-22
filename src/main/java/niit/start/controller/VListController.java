@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import niit.start.dao.VListDao;
+import niit.start.repository.VListRepository;
 import niit.start.entity.VList;
 
 import javax.annotation.Resource;
@@ -16,14 +16,14 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("api")
 public class VListController {
-    @Resource(name = "VListDao")
-    private VListDao VListDao;
+    @Resource(name = "VListRepository")
+    private VListRepository VListRepository;
 
     @RequestMapping("/getVList")
     @ResponseBody
     public List<VList> findAll() {
         List<VList> list;
-        list = VListDao.findAll();
+        list = VListRepository.findAll();
         return list;
     }
 
@@ -31,14 +31,14 @@ public class VListController {
     @ResponseBody
     public List<VList> getVListByMid(String mid) {
         List<VList> list;
-        list = VListDao.getVListByMid(mid);
+        list = VListRepository.getVListByMid(mid);
         return list;
     }
 
     @RequestMapping("/getVideoByBvid")
     @ResponseBody
     public VList getVideoByBvid(String bvid) {
-        VList vlist = VListDao.getVideoByBvid(bvid);
+        VList vlist = VListRepository.getVideoByBvid(bvid);
         return vlist;
     }
 
