@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("api")
 public class UpController {
-    @Resource(name = "UpRepository")
+    @Resource(name = "upRepository")
     private UpRepository UpRepository;
 
     @RequestMapping("/getUp")
