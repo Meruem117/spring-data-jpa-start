@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>niit</groupId>
-    <artifactId>start</artifactId>
+    <artifactId>springboot_jpa_start</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>start</name>
     <description>Springboot JPA start</description>
