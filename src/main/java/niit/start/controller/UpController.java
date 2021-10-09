@@ -1,56 +1,48 @@
 package niit.start.controller;
 
-import java.util.List;
-
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import niit.start.repository.UpRepository;
 import niit.start.entity.Up;
+import niit.start.repository.UpRepository;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
-@RestController
-@RequestMapping("api")
+@Controller
+@RequestMapping("/up")
 public class UpController {
-    @Resource(name = "upRepository")
-    private UpRepository UpRepository;
+    @Resource
+    private UpRepository upRepository;
 
-    @RequestMapping("/getUp")
+    @GetMapping("/get")
     @ResponseBody
-    public List<Up> findAll() {
+    public List<Up> getUps() {
         List<Up> list;
-        list = UpRepository.findAll();
+        list = upRepository.findAll();
         return list;
     }
 
-    @PostMapping("/addUp")
+    @PostMapping("/add")
     @ResponseBody
-    public void addUp(int id, String mid, String name) {
-        Up up = new Up();
-        up.setId(id);
-        up.setMid(mid);
-        up.setName(name);
-        UpRepository.save(up);
+    public int addUp(@RequestBody Up up) {
+        System.out.println(up);
+        upRepository.save(up);
+        return up.getId();
+    }
+
+    @PostMapping("/update")
+    @ResponseBody
+    public int updateUp(@RequestBody Up up) {
+        upRepository.save(up);
+        return up.getId();
     }
 
     @Transactional
-    @RequestMapping("/deleteUp")
+    @PostMapping("/delete")
     @ResponseBody
-    public void deleteUp(int id) {
-        UpRepository.deleteById(id);
-    }
-
-    @PostMapping("/updateUp")
-    @ResponseBody
-    public void updateUp(int id, String mid, String name) {
-        Up up = UpRepository.getUpById(id);
-        up.setId(id);
-        up.setMid(mid);
-        up.setName(name);
-        UpRepository.save(up);
+    public int deleteUp(@RequestParam("id") int id) {
+        upRepository.deleteById(id);
+        return id;
     }
 }

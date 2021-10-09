@@ -1,17 +1,17 @@
 package niit.start.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "up")
 public class Up implements Serializable {
-
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = 2744246298452003827L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
     @Column(name = "mid")
@@ -41,5 +41,14 @@ public class Up implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Up{" +
+                "id=" + id +
+                ", mid='" + mid + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
