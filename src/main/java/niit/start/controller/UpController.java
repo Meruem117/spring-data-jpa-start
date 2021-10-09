@@ -3,7 +3,6 @@ package niit.start.controller;
 import niit.start.entity.Up;
 import niit.start.repository.UpRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -38,7 +37,6 @@ public class UpController {
         return up.getId();
     }
 
-    @Transactional
     @PostMapping("/delete")
     @ResponseBody
     public int deleteUp(@RequestParam("id") int id) {
