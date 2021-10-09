@@ -1,6 +1,6 @@
-# Springboot_JPA_start
+# Spring Data JPA Start
 
-A springboot project using jpa and log4j.
+Demo project for spring data jpa
 
 **关联项目**
 
@@ -12,21 +12,23 @@ A springboot project using jpa and log4j.
 
 [Mapreduce](https://github.com/Meruem117/mapreduce_count_text)
 
-> 以下简记，非标记则为必填
+-----
 
 ## Up
 
-> 主要接口
+- `/up/get`
 
-- `/api/getUp`
+  - 请求方式: get
 
   - 描述: 获取up列表
 
   - 参数: 无
 
-- `/api/addUp`
+- `/up/add`
 
-  - 描述: 增加一条记录
+  - 请求方式: post
+
+  - 描述: 增加一条up记录
 
   - 参数: 
 
@@ -36,19 +38,11 @@ A springboot project using jpa and log4j.
     | mid  | up主id | string |
     | name | up主名 | string |
 
-- `/api/deleteUp`
+- `/up/update`
 
-  - 描述: 根据Id删除up信息
+  - 请求方式: post
 
-  - 参数:
-
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | id   | 主键 | number |
-
-- `/api/updateUp`
-
-  - 描述: 修改up信息
+  - 描述: 修改一条up记录
 
   - 参数: 
 
@@ -57,6 +51,18 @@ A springboot project using jpa and log4j.
     | id   | 主键   | number |
     | mid(可选)  | up主id | string |
     | name(可选) | up主名 | string |
+
+- `/up/delete`
+
+  - 请求方式: post
+
+  - 描述: 根据id删除一条up记录
+
+  - 参数:
+
+    | 字段 | 描述 | 类型   |
+    | ---- | ---- | ------ |
+    | id   | 主键 | number |
 
 **table structure**
 
@@ -68,8 +74,6 @@ A springboot project using jpa and log4j.
 
 
 ## User
-
-> 用的不多
 
 - `/api/getUser`
 
