@@ -1,16 +1,15 @@
 package niit.start.entity.hive;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "hr4")
 public class HResult4 implements Serializable {
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "process_date")
     private String process_date;
