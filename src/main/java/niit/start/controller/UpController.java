@@ -2,13 +2,12 @@ package niit.start.controller;
 
 import niit.start.entity.Up;
 import niit.start.repository.UpRepository;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/up")
 public class UpController {
     @Resource
@@ -39,7 +38,7 @@ public class UpController {
 
     @PostMapping("/delete")
     @ResponseBody
-    public int deleteUp(@RequestParam("id") int id) {
+    public int deleteUp(@RequestBody int id) {
         upRepository.deleteById(id);
         return id;
     }

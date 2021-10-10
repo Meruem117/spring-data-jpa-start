@@ -1,16 +1,15 @@
 package niit.start.entity.mapred;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "mapred")
 public class MResult implements Serializable {
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = -5421789665061450820L;
 
     @Id
     @Column(name = "name")

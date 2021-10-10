@@ -1,17 +1,12 @@
 package niit.start.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "up_list")
 public class UList implements Serializable {
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = 7759535272545163312L;
 
     @Id
     @GeneratedValue
@@ -95,5 +90,20 @@ public class UList implements Serializable {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    @Override
+    public String toString() {
+        return "UList{" +
+                "id=" + id +
+                ", mid='" + mid + '\'' +
+                ", name='" + name + '\'' +
+                ", face='" + face + '\'' +
+                ", gender='" + gender + '\'' +
+                ", fans=" + fans +
+                ", sign='" + sign + '\'' +
+                ", title='" + title + '\'' +
+                ", page=" + page +
+                '}';
     }
 }

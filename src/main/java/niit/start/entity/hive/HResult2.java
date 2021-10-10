@@ -1,17 +1,16 @@
 package niit.start.entity.hive;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "hr2")
 @IdClass(HResult2Key.class)
 public class HResult2 implements Serializable {
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = -4005845848674131939L;
 
     @Column(name = "process_date")
-    private String process_date;
+    private String processDate;
     @Id
     @Column(name = "author")
     private String author;
@@ -21,8 +20,8 @@ public class HResult2 implements Serializable {
     @Column(name = "count")
     private int count;
 
-    public String getProcess_date() {
-        return process_date;
+    public String getProcessDate() {
+        return processDate;
     }
 
     public String getAuthor() {
@@ -39,6 +38,7 @@ public class HResult2 implements Serializable {
 }
 
 class HResult2Key implements Serializable {
+    private static final long serialVersionUID = -2209363784644651045L;
     private String author;
     private String tm;
 }

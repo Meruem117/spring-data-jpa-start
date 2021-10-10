@@ -9,10 +9,10 @@ import java.io.Serializable;
 @Entity
 @Table(name = "hr4")
 public class HResult4 implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -6091481036140257477L;
 
     @Column(name = "process_date")
-    private String process_date;
+    private String processDate;
     @Column(name = "author")
     private String author;
     @Id
@@ -25,8 +25,8 @@ public class HResult4 implements Serializable {
     @Column(name = "tm")
     private String tm;
 
-    public String getProcess_date() {
-        return process_date;
+    public String getProcessDate() {
+        return processDate;
     }
 
     public String getAuthor() {

@@ -1,9 +1,6 @@
 package niit.start.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -12,6 +9,7 @@ public class Up implements Serializable {
     private static final long serialVersionUID = 2744246298452003827L;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private int id;
     @Column(name = "mid")

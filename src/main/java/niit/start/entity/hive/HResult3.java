@@ -1,19 +1,18 @@
 package niit.start.entity.hive;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "hr3")
 public class HResult3 implements Serializable {
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = -4334774891246390189L;
 
     @Column(name = "process_date")
-    private String process_date;
+    private String processDate;
     @Id
     @Column(name = "bvid")
     private String bvid;
@@ -32,8 +31,8 @@ public class HResult3 implements Serializable {
     @Column(name = "score")
     private int score;
 
-    public String getProcess_date() {
-        return process_date;
+    public String getProcessDate() {
+        return processDate;
     }
 
     public String getBvid() {

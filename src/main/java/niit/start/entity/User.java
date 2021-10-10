@@ -1,14 +1,12 @@
 package niit.start.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
-
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = -752250042954753327L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -93,4 +91,17 @@ public class User implements Serializable {
         this.created = created;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", location='" + location + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", gender='" + gender + '\'' +
+                ", created='" + created + '\'' +
+                '}';
+    }
 }

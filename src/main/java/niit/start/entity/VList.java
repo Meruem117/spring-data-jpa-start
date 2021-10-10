@@ -1,18 +1,12 @@
 package niit.start.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "video_list")
 public class VList implements Serializable {
-
-    private static final long serialVersionUID = 1L;// 序列化
+    private static final long serialVersionUID = -217157241424893877L;
 
     @Id
     @GeneratedValue
@@ -39,7 +33,6 @@ public class VList implements Serializable {
     private String description;
     @Column(name = "tm")
     private String tm;
-
 
     public int getId() {
         return id;
@@ -135,5 +128,23 @@ public class VList implements Serializable {
 
     public void setTm(String tm) {
         this.tm = tm;
+    }
+
+    @Override
+    public String toString() {
+        return "VList{" +
+                "id=" + id +
+                ", bvid='" + bvid + '\'' +
+                ", mid='" + mid + '\'' +
+                ", author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                ", pic='" + pic + '\'' +
+                ", play=" + play +
+                ", review=" + review +
+                ", comment=" + comment +
+                ", length='" + length + '\'' +
+                ", description='" + description + '\'' +
+                ", tm='" + tm + '\'' +
+                '}';
     }
 }
