@@ -1,25 +1,21 @@
 package niit.start.controller;
 
-import java.util.List;
-
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import niit.start.repository.VListRepository;
 import niit.start.entity.VList;
+import niit.start.repository.VListRepository;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("api")
+@RequestMapping("/vlist")
 public class VListController {
-    @Resource(name = "VListRepository")
+    @Resource
     private VListRepository VListRepository;
 
-    @RequestMapping("/getVList")
+    @GetMapping("/get")
     @ResponseBody
     public List<VList> findAll() {
         List<VList> list;
@@ -27,17 +23,17 @@ public class VListController {
         return list;
     }
 
-    @RequestMapping("/getVListByMid")
+    @GetMapping("/getByMid")
     @ResponseBody
-    public List<VList> getVListByMid(String mid) {
+    public List<VList> getVListByMid(@RequestParam("mid") String mid) {
         List<VList> list;
         list = VListRepository.getVListByMid(mid);
         return list;
     }
 
-    @RequestMapping("/getVideoByBvid")
+    @GetMapping("/getByBvid")
     @ResponseBody
-    public VList getVideoByBvid(String bvid) {
+    public VList getVideoByBvid(@RequestParam("bvid") String bvid) {
         VList vlist = VListRepository.getVideoByBvid(bvid);
         return vlist;
     }

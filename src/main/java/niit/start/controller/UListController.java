@@ -1,23 +1,19 @@
 package niit.start.controller;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import niit.start.repository.UListRepository;
 import niit.start.entity.UList;
+import niit.start.repository.UListRepository;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/ulist")
 public class UListController {
-    @Resource(name = "UListRepository")
+    @Resource
     private UListRepository UListRepository;
 
-    @RequestMapping("/getUList")
+    @GetMapping("/get")
     @ResponseBody
     public List<UList> findAll() {
         List<UList> list;
@@ -25,9 +21,9 @@ public class UListController {
         return list;
     }
 
-    @RequestMapping("/getUpByMid")
+    @GetMapping("/getByMid")
     @ResponseBody
-    public UList getUpByMid(String mid) {
+    public UList getUpByMid(@RequestParam("mid") String mid) {
         UList ulist = UListRepository.getUpByMid(mid);
         return ulist;
     }
