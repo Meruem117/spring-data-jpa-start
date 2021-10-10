@@ -1,27 +1,25 @@
 package niit.start.util;
 
-import java.util.List;
-import java.util.Random;
-
 import lombok.extern.slf4j.Slf4j;
+import niit.start.entity.VList;
+import niit.start.repository.VListRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import niit.start.repository.VListRepository;
-import niit.start.entity.VList;
-
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @RestController
-@RequestMapping("api")
+@RequestMapping("/log")
 public class LogGenerator {
-    @Resource(name = "VListRepository")
+    @Resource
     private VListRepository VListRepository;
 
-    @RequestMapping("/generateLog")
+    @RequestMapping("/generate")
     @ResponseBody
     public boolean generateLog(int n) {
         List<VList> list;
@@ -42,7 +40,7 @@ public class LogGenerator {
         return res;
     }
 
-    @PostMapping("/addLog")
+    @PostMapping("/add")
     @ResponseBody
     public void addLog(String author, String bvid, String location) {
         String loc = location.split(" ")[0];

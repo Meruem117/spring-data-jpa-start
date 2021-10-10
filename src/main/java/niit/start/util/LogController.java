@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@RequestMapping("api")
+@RequestMapping("/log")
 public class LogController {
 
     @RequestMapping("/ls")
@@ -23,7 +23,7 @@ public class LogController {
 
     @RequestMapping("/dfsls")
     @ResponseBody
-    public String dfs_ls(HttpServletRequest request, HttpServletResponse response, String path) {
+    public String dfsLs(HttpServletRequest request, HttpServletResponse response, String path) {
         response.setHeader("Access-Control-Allow-Origin", "*");
         String result = RemoteExecutor.getInstance().execute("hdfs dfs -ls " + path);
         return result;
