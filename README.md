@@ -167,21 +167,22 @@ Demo project for spring data jpa
 |   gender   |   性别   |   String   |
 |   created   |   注册时间(yyyy-MM-dd HH:mm:ss)   |   String   |
 
-> 以上前端相关
-
 -----
 
 ## UList
 
-> 爬虫爬取，存在数据库中，未用到
-
-- `/api/getUList`
+- `/ulist/get`
 
   - 描述: 获取up列表(详细信息)
 
-  - 参数: 无
+  - 参数: 
 
-- `/api/getUpByMid`
+    | 字段 | 描述   | 类型   |
+    | ---- | ------ | ------ |
+    | start   |  起始页(从0开始)   | number |
+    | size  | 每页大小 | number |
+
+- `/ulist/getByMid`
 
   - 描述: 根据mid查询up详细信息
 
@@ -190,7 +191,6 @@ Demo project for spring data jpa
     | 字段 | 描述 | 类型   |
     | ---- | ---- | ------ |
     | mid   | up主id | string |
-
 
 **table structure**
 
@@ -209,15 +209,18 @@ Demo project for spring data jpa
 
 ## VList
 
-> 爬虫爬取，用于批量生成假日志
-
-- `/api/getVList`
+- `/vlist/get`
 
   - 描述: 获取所有视频
 
-  - 参数: 无
+  - 参数: 
 
-- `/api/getVListByMid`
+    | 字段 | 描述   | 类型   |
+    | ---- | ------ | ------ |
+    | start   |  起始页(从0开始)   | number |
+    | size  | 每页大小 | number |
+
+- `/vlist/getByMid`
 
   - 描述: 查询单个up主的全部视频
 
@@ -227,7 +230,7 @@ Demo project for spring data jpa
     | ---- | ---- | ------ |
     | mid   | up主id | string |
 
-- `/api/getVideoByBvid`
+- `/vlist/getByBvid`
 
   - 描述: 根据bvid查询单个视频信息
 
@@ -236,7 +239,6 @@ Demo project for spring data jpa
     | 字段 | 描述 | 类型   |
     | ---- | ---- | ------ |
     | bvid   | 视频bv号 | string |
-
 
 **table structure**
 
