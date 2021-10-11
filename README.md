@@ -22,8 +22,13 @@ Demo project for spring data jpa
 
   - 描述: 获取up列表
 
-  - 参数: 无
+  - 参数: 
 
+    | 字段 | 描述   | 类型   |
+    | ---- | ------ | ------ |
+    | start   |  起始页(从0开始)   | number |
+    | size  | 每页大小 | number |
+    
 - `/up/add`
 
   - 请求方式: post
@@ -49,8 +54,8 @@ Demo project for spring data jpa
     | 字段 | 描述   | 类型   |
     | ---- | ------ | ------ |
     | id   | 主键   | number |
-    | mid(可选)  | up主id | string |
-    | name(可选) | up主名 | string |
+    | mid  | up主id | string |
+    | name | up主名 | string |
 
 - `/up/delete`
 

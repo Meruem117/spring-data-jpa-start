@@ -2,6 +2,8 @@ package niit.start.controller;
 
 import niit.start.entity.Up;
 import niit.start.repository.UpRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,16 +17,16 @@ public class UpController {
 
     @GetMapping("/get")
     @ResponseBody
-    public List<Up> getUps() {
-        List<Up> list;
-        list = upRepository.findAll();
+    public List<Up> getUps(@RequestParam("start") int start, @RequestParam("size") int size) {
+        PageRequest pageRequest = PageRequest.of(start, size);
+        Page<Up> page = upRepository.findAll(pageRequest);
+        List<Up> list = page.getContent();
         return list;
     }
 
     @PostMapping("/add")
     @ResponseBody
     public int addUp(@RequestBody Up up) {
-        System.out.println(up);
         upRepository.save(up);
         return up.getId();
     }
