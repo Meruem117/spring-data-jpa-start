@@ -1,87 +1,75 @@
 package niit.start.controller;
 
+import niit.start.entity.User;
+import niit.start.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import niit.start.repository.UserRepository;
-import niit.start.entity.User;
-
-import javax.annotation.Resource;
-
 @RestController
-@RequestMapping("api")
+@RequestMapping("user")
 public class UserController {
-    @Resource(name = "userRepository")
+    @Resource
     private UserRepository UserRepository;
 
-    @RequestMapping("/getUser")
+    @GetMapping("/get")
     @ResponseBody
-    public List<User> findAll() {
-        List<User> list;
-        list = UserRepository.findAll();
+    public List<User> getUsers(@RequestParam("start") int start, @RequestParam("size") int size) {
+        PageRequest pageRequest = PageRequest.of(start, size);
+        Page<User> page = UserRepository.findAll(pageRequest);
+        List<User> list = page.getContent();
         return list;
     }
 
-    @RequestMapping("/getUserById")
+    @GetMapping("/getById")
     @ResponseBody
-    public User getUserById(Integer id) {
+    public User getUserById(@RequestParam("id") int id) {
         User user = UserRepository.getUserById(id);
         return user;
     }
 
-    @RequestMapping("/getUserByName")
+    @GetMapping("/getByName")
     @ResponseBody
-    public User getUserByName(String name) {
+    public User getUserByName(@RequestParam("name") String name) {
         User user = UserRepository.getUserByName(name);
         return user;
     }
 
-    @RequestMapping("/checkUser")
+    @GetMapping("/check")
     @ResponseBody
-    public String checkUser(String name) {
+    public String checkUser(@RequestParam("name") String name) {
         User user = UserRepository.getUserByName(name);
         return user.getPassword();
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/add")
     @ResponseBody
-    public void addUser(String name, String password, String gender, String location, String birthday) {
-        User user = new User();
-        user.setName(name);
-        user.setPassword(password);
+    public int addUser(@RequestBody User user) {
         user.setRole("user");
-        user.setGender(gender);
-        user.setLocation(location);
-        user.setBirthday(birthday);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(new Date());
         user.setCreated(date);
         UserRepository.save(user);
+        return user.getId();
     }
 
-    @Transactional
-    @RequestMapping("/deleteUserById")
+    @PostMapping("/update")
     @ResponseBody
-    public void deleteUserById(Integer id) {
-        UserRepository.deleteUserById(id);
-    }
-
-    @PostMapping("/updateUser")
-    @ResponseBody
-    public void getUserById(Integer id, String name, String gender, String location, String birthday) {
-        User user = UserRepository.getUserById(id);
-        user.setName(name);
-//        user.setPassword(password);
-        user.setGender(gender);
-        user.setLocation(location);
-        user.setBirthday(birthday);
+    public int updateUser(@RequestBody User user) {
         UserRepository.save(user);
+        return user.getId();
     }
+
+    @PostMapping("/delete")
+    @ResponseBody
+    public int deleteUser(@RequestBody int id) {
+        UserRepository.deleteUserById(id);
+        return id;
+    }
+
 }
