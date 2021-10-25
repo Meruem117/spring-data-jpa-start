@@ -23,11 +23,4 @@ public class UListController {
         List<UList> list = page.getContent();
         return list;
     }
-
-    @GetMapping("/getByMid")
-    @ResponseBody
-    public UList getUpByMid(@RequestParam("mid") String mid) {
-        UList ulist = UListRepository.getUpByMid(mid);
-        return ulist;
-    }
 }

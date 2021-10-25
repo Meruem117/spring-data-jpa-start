@@ -5,21 +5,24 @@ import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class RemoteExecutor {
-    private static String DEFAULTCHARSET = "UTF-8";
+    private static String DEFAULT_CHARSET = "UTF-8";
     private Connection conn;
     private String ip;
-    private String userName;
-    private String userPwd;
+    private String username;
+    private String password;
 
     public static volatile RemoteExecutor instance;
 
     private RemoteExecutor() {
         this.ip = "192.168.186.100";
-        this.userName = "meru";
-        this.userPwd = "niit1234";
+        this.username = "meru";
+        this.password = "niit1234";
     }
 
     public static RemoteExecutor getInstance() {
@@ -37,8 +40,8 @@ public class RemoteExecutor {
         boolean flg = false;
         try {
             conn = new Connection(ip);
-            conn.connect();// 连接
-            flg = conn.authenticateWithPassword(userName, userPwd);// 认证
+            conn.connect();
+            flg = conn.authenticateWithPassword(username, password);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,29 +52,12 @@ public class RemoteExecutor {
         String result = "";
         try {
             if (login()) {
-                Session session = conn.openSession();// 打开一个会话
-                session.execCommand(cmd);// 执行命令
-                result = processStdout(session.getStdout(), DEFAULTCHARSET);
-                // 如果为得到标准输出为空，说明脚本执行出错了
+                Session session = conn.openSession();
+                session.execCommand(cmd);
+                result = processStdout(session.getStdout(), DEFAULT_CHARSET);
                 if (StringUtils.isBlank(result)) {
-                    result = processStdout(session.getStderr(), DEFAULTCHARSET);
+                    result = processStdout(session.getStderr(), DEFAULT_CHARSET);
                 }
-                conn.close();
-                session.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public String executeSuccess(String cmd) {
-        String result = "";
-        try {
-            if (login()) {
-                Session session = conn.openSession();// 打开一个会话
-                session.execCommand(cmd);// 执行命令
-                result = processStdout(session.getStdout(), DEFAULTCHARSET);
                 conn.close();
                 session.close();
             }
@@ -88,49 +74,11 @@ public class RemoteExecutor {
             BufferedReader br = new BufferedReader(new InputStreamReader(stdout, charset));
             String line = null;
             while ((line = br.readLine()) != null) {
-                buffer.append(line + "\n");
+                buffer.append(line).append("\n");
             }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return buffer.toString();
-    }
-
-    public static void setCharset(String charset) {
-        DEFAULTCHARSET = charset;
-    }
-
-    public Connection getConn() {
-        return conn;
-    }
-
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPwd() {
-        return userPwd;
-    }
-
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
     }
 }

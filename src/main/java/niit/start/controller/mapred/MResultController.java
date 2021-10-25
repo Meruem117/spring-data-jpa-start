@@ -1,22 +1,22 @@
 package niit.start.controller.mapred;
 
+import niit.start.entity.mapred.MResult;
+import niit.start.repository.mapred.MResultRepository;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import niit.start.repository.mapred.MResultRepository;
-import niit.start.entity.mapred.MResult;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class MResultController {
-    @Resource(name = "MResultRepository")
+    @Resource
     private MResultRepository MResultRepository;
 
-    @RequestMapping("/getMResult")
+    @GetMapping("/getMResult")
     @ResponseBody
     public List<MResult> findAll() {
         List<MResult> list;
@@ -24,7 +24,7 @@ public class MResultController {
         return list;
     }
 
-    @RequestMapping("/getDistinctTm")
+    @GetMapping("/getDistinctTm")
     @ResponseBody
     public List<String> getDistinctTm() {
         List<String> list;
@@ -32,7 +32,7 @@ public class MResultController {
         return list;
     }
 
-    @RequestMapping("/getMResultByType")
+    @GetMapping("/getMResultByType")
     @ResponseBody
     public List<MResult> getMResultByType(int type) {
         List<MResult> list;
@@ -40,7 +40,7 @@ public class MResultController {
         return list;
     }
 
-    @RequestMapping("/getMResultByTypeAndTm")
+    @GetMapping("/getMResultByTypeAndTm")
     @ResponseBody
     public List<MResult> getMResultByTypeAndTm(int type, String tm) {
         List<MResult> list;
@@ -48,7 +48,7 @@ public class MResultController {
         return list;
     }
 
-    @RequestMapping("/getMResultByNameAndTm")
+    @GetMapping("/getMResultByNameAndTm")
     @ResponseBody
     public MResult getMResultByNameAndTm(String name, String tm) {
         MResult mr;
