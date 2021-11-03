@@ -24,6 +24,13 @@ public class UpController {
         return list;
     }
 
+    @GetMapping("/all")
+    @ResponseBody
+    public List<Up> getAllUps() {
+        List<Up> list = upRepository.findAll();
+        return list;
+    }
+
     @PostMapping("/add")
     @ResponseBody
     public int addUp(@RequestBody Up up) {
