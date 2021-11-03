@@ -18,56 +18,64 @@ Demo project for spring data jpa
 
 - `/up/get`
 
-  - 请求方式: get
+    - 请求方式: get
 
-  - 描述: 获取up列表
+    - 描述: 获取up分页列表
 
-  - 参数: 
+    - 参数:
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | start   |  起始页(从0开始)   | number |
-    | size  | 每页大小 | number |
-    
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | start   |  起始页(从0开始)   | number |
+      | size  | 每页大小 | number |
+
+- `/up/all`
+
+    - 请求方式: get
+
+    - 描述: 获取全部up数据
+
+    - 参数: 无
+
 - `/up/add`
 
-  - 请求方式: post
+    - 请求方式: post
 
-  - 描述: 增加一条up记录
+    - 描述: 增加一条up记录
 
-  - 参数: 
+    - 参数:
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | id   | 主键   | number |
-    | mid  | up主id | string |
-    | name | up主名 | string |
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | id   | 主键   | number |
+      | mid  | up主id | string |
+      | name | up主名 | string |
 
 - `/up/update`
 
-  - 请求方式: post
+    - 请求方式: post
 
-  - 描述: 修改一条up记录
+    - 描述: 修改一条up记录
 
-  - 参数: 
+    - 参数:
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | id   | 主键   | number |
-    | mid  | up主id | string |
-    | name | up主名 | string |
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | id   | 主键   | number |
+      | mid  | up主id | string |
+      | name | up主名 | string |
 
 - `/up/delete`
 
-  - 请求方式: post
+    - 请求方式: post
 
-  - 描述: 根据id删除一条up记录
+    - 描述: 根据id删除一条up记录
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | id   | 主键 | number |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | id   | 主键 | number |
 
 **table structure**
 
@@ -77,82 +85,109 @@ Demo project for spring data jpa
 |   mid   |   up主id   |   String   |
 |   name   |   up主名   |   String   |
 
-
 ## User
 
-- `/api/getUser`
+- `/user/get`
 
-  - 描述: 获取用户列表
+    - 请求方式: get
+    
+    - 描述: 获取用户分页列表
 
-  - 参数: 无
+    - 参数:
 
-- `/api/getUserById`
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | start   |  起始页(从0开始)   | number |
+      | size  | 每页大小 | number |
 
-  - 描述: 根据Id查询用户信息
+- `/user/all`
 
-  - 参数:
+    - 请求方式: get
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | id   | 主键 | number |
+    - 描述: 获取全部用户数据
 
-- `/api/getUserByName`
+    - 参数: 无
 
-  - 描述: 根据用户名查询用户信息
+- `/user/getById`
 
-  - 参数:
+    - 请求方式: get
+    
+    - 描述: 根据Id查询用户信息
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | name   | 用户名 | string |
+    - 参数:
 
-- `/api/checkUser`
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | id   | 主键 | number |
 
-  - 描述: 查询用户密码并返回
+- `/user/getByName`
 
-  - 参数:
+    - 请求方式: get
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | name   | 用户名 | string |
+    - 描述: 根据用户名查询用户信息
 
-- `/api/addUser`
+    - 参数:
 
-  - 描述: 增加用户
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | name   | 用户名 | string |
 
-  - 参数: 
+- `/user/check`
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | name   | 用户名   | string |
-    | password  | 密码 | string |
-    | gender(可选) | 性别 | string |
-    | location(可选) | 地区 | string |
-    | birthday(可选) | 出生日期 | string |
+    - 请求方式: post
 
-- `/api/deleteUserById`
+    - 描述: 查询用户密码并返回
 
-  - 描述: 根据Id删除用户
+    - 参数:
 
-  - 参数:
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | name   | 用户名 | string |
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | id   | 主键 | number |
+- `/user/add`
 
-- `/api/updateUser`
+    - 请求方式: post
 
-  - 描述: 根据Id更新用户信息
+    - 描述: 增加用户
 
-  - 参数: 
+    - 参数:
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | id  | 用户Id | number |
-    | name(可选)   | 用户名   | string |
-    | gender(可选) | 性别 | string |
-    | location(可选) | 地区 | string |
-    | birthday(可选) | 出生日期 | string |
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | name   | 用户名   | string |
+      | password  | 密码 | string |
+      | gender(可选) | 性别 | string |
+      | location(可选) | 地区 | string |
+      | birthday(可选) | 出生日期 | string |
+
+- `/user/update`
+
+    - 请求方式: post
+
+    - 描述: 根据Id更新用户信息
+
+    - 参数:
+
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | id  | 用户Id | number |
+      | name(可选)   | 用户名   | string |
+      | gender(可选) | 性别 | string |
+      | location(可选) | 地区 | string |
+      | birthday(可选) | 出生日期 | string |
+
+- `/user/delete`
+
+    - 请求方式: post
+
+    - 描述: 根据Id删除用户
+
+    - 参数:
+
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | id   | 主键 | number |
+
 
 **table structure**
 
@@ -173,24 +208,24 @@ Demo project for spring data jpa
 
 - `/ulist/get`
 
-  - 描述: 获取up列表(详细信息)
+    - 描述: 获取up列表(详细信息)
 
-  - 参数: 
+    - 参数:
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | start   |  起始页(从0开始)   | number |
-    | size  | 每页大小 | number |
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | start   |  起始页(从0开始)   | number |
+      | size  | 每页大小 | number |
 
 - `/ulist/getByMid`
 
-  - 描述: 根据mid查询up详细信息
+    - 描述: 根据mid查询up详细信息
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | mid   | up主id | string |
+      | 字段 | 描述 | 类型   |
+                                                          | ---- | ---- | ------ |
+      | mid   | up主id | string |
 
 **table structure**
 
@@ -206,39 +241,38 @@ Demo project for spring data jpa
 |   title   |   认证词条   |   String   |
 |   page   |   视频页数(每页30个)   |   int   |
 
-
 ## VList
 
 - `/vlist/get`
 
-  - 描述: 获取所有视频
+    - 描述: 获取所有视频
 
-  - 参数: 
+    - 参数:
 
-    | 字段 | 描述   | 类型   |
-    | ---- | ------ | ------ |
-    | start   |  起始页(从0开始)   | number |
-    | size  | 每页大小 | number |
+      | 字段 | 描述   | 类型   |
+      | ---- | ------ | ------ |
+      | start   |  起始页(从0开始)   | number |
+      | size  | 每页大小 | number |
 
 - `/vlist/getByMid`
 
-  - 描述: 查询单个up主的全部视频
+    - 描述: 查询单个up主的全部视频
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | mid   | up主id | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | mid   | up主id | string |
 
 - `/vlist/getByBvid`
 
-  - 描述: 根据bvid查询单个视频信息
+    - 描述: 根据bvid查询单个视频信息
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | bvid   | 视频bv号 | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | bvid   | 视频bv号 | string |
 
 **table structure**
 
@@ -257,7 +291,6 @@ Demo project for spring data jpa
 |   description   |   介绍   |   String   |
 |   tm   |   时间(yyyy-MM-dd HH:mm:ss)   |   String   |
 
-
 > 以上数据均来自爬虫，主要用于生成日志
 
 [传送门](https://github.com/Meruem117/bilibili_spider)
@@ -272,48 +305,47 @@ Demo project for spring data jpa
 
 - `/api/getMResult`
 
-  - 描述: 获取分析后的所有结果
+    - 描述: 获取分析后的所有结果
 
-  - 参数: 无
+    - 参数: 无
 
 - `/api/getDistinctTm`
 
-  - 描述: 获取分析后的不同的时间(yyyy-mm-dd)
+    - 描述: 获取分析后的不同的时间(yyyy-mm-dd)
 
-  - 参数: 无
+    - 参数: 无
 
 - `/api/getMResultByType`
 
-  - 描述: 根据类型获取分析结果
+    - 描述: 根据类型获取分析结果
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
 
 - `/api/getMResultByTypeAndTm`
 
-  - 描述: 根据类型和时间获取分析结果
+    - 描述: 根据类型和时间获取分析结果
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
-    | tm   | 时间(yyyy-MM-dd) | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
+      | tm   | 时间(yyyy-MM-dd) | string |
 
 - `/api/getMResultByNameAndTm`
 
-  - 描述: 根据名称和时间获取分析结果
+    - 描述: 根据名称和时间获取分析结果
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | name   | 名称(up主名或bv号或用户地区) | number |
-    | tm   | 时间(yyyy-MM-dd) | string |
-
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | name   | 名称(up主名或bv号或用户地区) | number |
+      | tm   | 时间(yyyy-MM-dd) | string |
 
 **table structure**
 
@@ -324,7 +356,6 @@ Demo project for spring data jpa
 |   count   |   总数   |   int   |
 |   tm   |   时间(yyyy-MM-dd)   |   String   |
 
-
 ## Hive
 
 > hive分析结果
@@ -333,28 +364,27 @@ Demo project for spring data jpa
 
 - `/api/getHResult1`
 
-  - 描述: 获取每年视频数
+    - 描述: 获取每年视频数
 
-  - 参数: 无
+    - 参数: 无
 
 - `/api/getHResult2`
 
-  - 描述: 获取每个作者不同时间(yyyy-mm)的视频数
+    - 描述: 获取每个作者不同时间(yyyy-mm)的视频数
 
-  - 参数: 无
+    - 参数: 无
 
 - `/api/getHResult3`
 
-  - 描述: 获取综合评分前40的视频列表
+    - 描述: 获取综合评分前40的视频列表
 
-  - 参数: 无
+    - 参数: 无
 
 - `/api/getHResult4`
 
-  - 描述: 获取播放破千万的视频列表
+    - 描述: 获取播放破千万的视频列表
 
-  - 参数: 无
-
+    - 参数: 无
 
 **table structure**
 
@@ -400,7 +430,6 @@ Hive Result 4
 |   play   |   播放量   |   int   |
 |   tm   |   时间(yyyy-MM-dd HH:mm:ss)   |   String   |
 
-
 > 以上用于获取大数据分析结果
 
 -----
@@ -411,26 +440,25 @@ Hive Result 4
 
 - `/api/generateLog`
 
-  - 描述: 批量生成日志
+    - 描述: 批量生成日志
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | n   | 生成日志数 | number |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | n   | 生成日志数 | number |
 
 - `/api/addLog`
 
-  - 描述: 记录一条日志
+    - 描述: 记录一条日志
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | author   | up主名 | string |
-    | bvid   | 视频bv号 | string |
-    | location   | 用户地区 | string |
-
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | author   | up主名 | string |
+      | bvid   | 视频bv号 | string |
+      | location   | 用户地区 | string |
 
 -----
 
@@ -440,46 +468,46 @@ Hive Result 4
 
 - `/api/ls`
 
-  - 描述: 执行`ls`
+    - 描述: 执行`ls`
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | path | 虚拟机路径 | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | path | 虚拟机路径 | string |
 
 - `/api/dfsls`
 
-  - 描述: 执行`hdfs dfs -ls`
+    - 描述: 执行`hdfs dfs -ls`
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | path | Hadoop路径 | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | path | Hadoop路径 | string |
 
 - `/api/flume`
 
-  - 描述: 执行flume命令，将`log4j`生成的日志上传到`HDFS`
+    - 描述: 执行flume命令，将`log4j`生成的日志上传到`HDFS`
 
-  - 参数: 无
+    - 参数: 无
 
 - `/api/mapred`
 
-  - 描述: 执行mapreduce程序
+    - 描述: 执行mapreduce程序
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | input | HDFS需要分析的文件路径 | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | input | HDFS需要分析的文件路径 | string |
 
 - `/api/sqoop`
 
-  - 描述: 执行sqoop命令，将mapreduce分析结果导出到mysql
+    - 描述: 执行sqoop命令，将mapreduce分析结果导出到mysql
 
-  - 参数:
+    - 参数:
 
-    | 字段 | 描述 | 类型   |
-    | ---- | ---- | ------ |
-    | path | HDFS分析结果的路径 | string |
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | path | HDFS分析结果的路径 | string |

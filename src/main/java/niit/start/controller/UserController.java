@@ -26,6 +26,13 @@ public class UserController {
         return list;
     }
 
+    @GetMapping("/all")
+    @ResponseBody
+    public List<User> getAllUsers() {
+        List<User> list = UserRepository.findAll();
+        return list;
+    }
+
     @GetMapping("/getById")
     @ResponseBody
     public User getUserById(@RequestParam("id") int id) {
