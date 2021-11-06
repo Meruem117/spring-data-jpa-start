@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 
 public class RemoteExecutor {
     private static String DEFAULT_CHARSET = "UTF-8";
-    private Connection conn;
+    private Connection con;
     private String ip;
     private String username;
     private String password;
@@ -37,28 +37,28 @@ public class RemoteExecutor {
     }
 
     public Boolean login() {
-        boolean flg = false;
+        boolean flag = false;
         try {
-            conn = new Connection(ip);
-            conn.connect();
-            flg = conn.authenticateWithPassword(username, password);
+            con = new Connection(ip);
+            con.connect();
+            flag = con.authenticateWithPassword(username, password);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return flg;
+        return flag;
     }
 
     public String execute(String cmd) {
         String result = "";
         try {
             if (login()) {
-                Session session = conn.openSession();
+                Session session = con.openSession();
                 session.execCommand(cmd);
                 result = processStdout(session.getStdout(), DEFAULT_CHARSET);
                 if (StringUtils.isBlank(result)) {
                     result = processStdout(session.getStderr(), DEFAULT_CHARSET);
                 }
-                conn.close();
+                con.close();
                 session.close();
             }
         } catch (IOException e) {
