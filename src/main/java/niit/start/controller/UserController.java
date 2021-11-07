@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("user")
@@ -47,11 +48,12 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/check")
+    @PostMapping("/check")
     @ResponseBody
-    public String checkUser(@RequestParam("name") String name) {
-        User user = UserRepository.getUserByName(name);
-        return user.getPassword();
+    public boolean checkUser(@RequestBody User user) {
+        String name = user.getName();
+        String password = user.getPassword();
+        return Objects.equals(password, UserRepository.getUserByName(name).getPassword());
     }
 
     @PostMapping("/add")
