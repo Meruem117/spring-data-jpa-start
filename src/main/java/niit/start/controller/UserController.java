@@ -48,6 +48,13 @@ public class UserController {
         return user;
     }
 
+    @GetMapping("/exist")
+    @ResponseBody
+    public boolean existsByName(@RequestParam("name") String name) {
+        boolean res = UserRepository.existsByName(name);
+        return res;
+    }
+
     @PostMapping("/check")
     @ResponseBody
     public boolean checkUser(@RequestBody User user) {
@@ -59,7 +66,6 @@ public class UserController {
     @PostMapping("/add")
     @ResponseBody
     public int addUser(@RequestBody User user) {
-        user.setRole("user");
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(new Date());
         user.setCreated(date);

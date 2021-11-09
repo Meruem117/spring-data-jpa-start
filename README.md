@@ -16,6 +16,7 @@ Demo project for spring data jpa
 
 ## Up
 
+
 - `/up/get`
 
     - 请求方式: get
@@ -28,6 +29,7 @@ Demo project for spring data jpa
       | ---- | ------ | ------ |
       | start   |  起始页(从0开始)   | number |
       | size  | 每页大小 | number |
+    
 
 - `/up/all`
 
@@ -36,6 +38,7 @@ Demo project for spring data jpa
     - 描述: 获取全部up数据
 
     - 参数: 无
+    
 
 - `/up/add`
 
@@ -51,6 +54,7 @@ Demo project for spring data jpa
       | mid  | up主id | string |
       | name | up主名 | string |
 
+
 - `/up/update`
 
     - 请求方式: post
@@ -65,6 +69,7 @@ Demo project for spring data jpa
       | mid  | up主id | string |
       | name | up主名 | string |
 
+
 - `/up/delete`
 
     - 请求方式: post
@@ -77,6 +82,7 @@ Demo project for spring data jpa
       | ---- | ---- | ------ |
       | id   | 主键 | number |
 
+
 **table structure**
 
 | 字段 | 描述 | 类型 |
@@ -85,7 +91,9 @@ Demo project for spring data jpa
 |   mid   |   up主id   |   String   |
 |   name   |   up主名   |   String   |
 
+
 ## User
+
 
 - `/user/get`
 
@@ -99,6 +107,7 @@ Demo project for spring data jpa
       | ---- | ------ | ------ |
       | start   |  起始页(从0开始)   | number |
       | size  | 每页大小 | number |
+    
 
 - `/user/all`
 
@@ -107,6 +116,7 @@ Demo project for spring data jpa
     - 描述: 获取全部用户数据
 
     - 参数: 无
+    
 
 - `/user/getById`
 
@@ -120,6 +130,7 @@ Demo project for spring data jpa
       | ---- | ---- | ------ |
       | id   | 主键 | number |
 
+
 - `/user/getByName`
 
     - 请求方式: get
@@ -132,6 +143,20 @@ Demo project for spring data jpa
       | ---- | ---- | ------ |
       | name   | 用户名 | string |
 
+
+- `/user/exist`
+
+    - 请求方式: get
+
+    - 描述: 查询数据库中是否存在同名用户
+
+    - 参数:
+
+      | 字段 | 描述 | 类型   |
+      | ---- | ---- | ------ |
+      | name   | 用户名 | string |
+    
+
 - `/user/check`
 
     - 请求方式: post
@@ -143,6 +168,7 @@ Demo project for spring data jpa
       | 字段 | 描述 | 类型   |
       | ---- | ---- | ------ |
       | name   | 用户名 | string |
+
 
 - `/user/add`
 
@@ -160,6 +186,7 @@ Demo project for spring data jpa
       | location(可选) | 地区 | string |
       | birthday(可选) | 出生日期 | string |
 
+
 - `/user/update`
 
     - 请求方式: post
@@ -175,6 +202,7 @@ Demo project for spring data jpa
       | gender(可选) | 性别 | string |
       | location(可选) | 地区 | string |
       | birthday(可选) | 出生日期 | string |
+
 
 - `/user/delete`
 
@@ -202,9 +230,12 @@ Demo project for spring data jpa
 |   gender   |   性别   |   String   |
 |   created   |   注册时间(yyyy-MM-dd HH:mm:ss)   |   String   |
 
+
 -----
 
+
 ## UList
+
 
 - `/ulist/get`
 
@@ -217,6 +248,7 @@ Demo project for spring data jpa
       | start   |  起始页(从0开始)   | number |
       | size  | 每页大小 | number |
 
+
 - `/ulist/getByMid`
 
     - 描述: 根据mid查询up详细信息
@@ -226,6 +258,7 @@ Demo project for spring data jpa
       | 字段 | 描述 | 类型   |
                                                           | ---- | ---- | ------ |
       | mid   | up主id | string |
+
 
 **table structure**
 
@@ -241,7 +274,9 @@ Demo project for spring data jpa
 |   title   |   认证词条   |   String   |
 |   page   |   视频页数(每页30个)   |   int   |
 
+
 ## VList
+
 
 - `/vlist/get`
 
@@ -254,6 +289,7 @@ Demo project for spring data jpa
       | start   |  起始页(从0开始)   | number |
       | size  | 每页大小 | number |
 
+
 - `/vlist/getByMid`
 
     - 描述: 查询单个up主的全部视频
@@ -264,6 +300,7 @@ Demo project for spring data jpa
       | ---- | ---- | ------ |
       | mid   | up主id | string |
 
+
 - `/vlist/getByBvid`
 
     - 描述: 根据bvid查询单个视频信息
@@ -273,6 +310,7 @@ Demo project for spring data jpa
       | 字段 | 描述 | 类型   |
       | ---- | ---- | ------ |
       | bvid   | 视频bv号 | string |
+
 
 **table structure**
 
@@ -295,7 +333,9 @@ Demo project for spring data jpa
 
 [传送门](https://github.com/Meruem117/bilibili_spider)
 
+
 -----
+
 
 ## MapReduce
 
@@ -303,17 +343,20 @@ Demo project for spring data jpa
 
 [传送门](https://github.com/Meruem117/mapreduce_count_text)
 
+
 - `/api/getMResult`
 
     - 描述: 获取分析后的所有结果
 
     - 参数: 无
 
+
 - `/api/getDistinctTm`
 
     - 描述: 获取分析后的不同的时间(yyyy-mm-dd)
 
     - 参数: 无
+
 
 - `/api/getMResultByType`
 
@@ -324,6 +367,7 @@ Demo project for spring data jpa
       | 字段 | 描述 | 类型   |
       | ---- | ---- | ------ |
       | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
+
 
 - `/api/getMResultByTypeAndTm`
 
@@ -336,6 +380,7 @@ Demo project for spring data jpa
       | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
       | tm   | 时间(yyyy-MM-dd) | string |
 
+
 - `/api/getMResultByNameAndTm`
 
     - 描述: 根据名称和时间获取分析结果
@@ -347,6 +392,7 @@ Demo project for spring data jpa
       | name   | 名称(up主名或bv号或用户地区) | number |
       | tm   | 时间(yyyy-MM-dd) | string |
 
+
 **table structure**
 
 | 字段 | 描述 | 类型 |
@@ -356,11 +402,13 @@ Demo project for spring data jpa
 |   count   |   总数   |   int   |
 |   tm   |   时间(yyyy-MM-dd)   |   String   |
 
+
 ## Hive
 
 > hive分析结果
 
 [传送门](https://github.com/Meruem117/vite_vue3_start/blob/main/src/assets/Hive.md)
+
 
 - `/api/getHResult1`
 
@@ -368,11 +416,13 @@ Demo project for spring data jpa
 
     - 参数: 无
 
+
 - `/api/getHResult2`
 
     - 描述: 获取每个作者不同时间(yyyy-mm)的视频数
 
     - 参数: 无
+
 
 - `/api/getHResult3`
 
@@ -380,11 +430,13 @@ Demo project for spring data jpa
 
     - 参数: 无
 
+
 - `/api/getHResult4`
 
     - 描述: 获取播放破千万的视频列表
 
     - 参数: 无
+
 
 **table structure**
 
@@ -432,11 +484,14 @@ Hive Result 4
 
 > 以上用于获取大数据分析结果
 
+
 -----
+
 
 ## Log
 
 > 生成日志
+
 
 - `/api/generateLog`
 
@@ -447,6 +502,7 @@ Hive Result 4
       | 字段 | 描述 | 类型   |
       | ---- | ---- | ------ |
       | n   | 生成日志数 | number |
+
 
 - `/api/addLog`
 
@@ -460,11 +516,14 @@ Hive Result 4
       | bvid   | 视频bv号 | string |
       | location   | 用户地区 | string |
 
+
 -----
+
 
 ## SSH2
 
 > 与Linux虚拟机连接，并执行命令
+
 
 - `/api/ls`
 
@@ -476,6 +535,7 @@ Hive Result 4
       | ---- | ---- | ------ |
       | path | 虚拟机路径 | string |
 
+
 - `/api/dfsls`
 
     - 描述: 执行`hdfs dfs -ls`
@@ -486,11 +546,13 @@ Hive Result 4
       | ---- | ---- | ------ |
       | path | Hadoop路径 | string |
 
+
 - `/api/flume`
 
     - 描述: 执行flume命令，将`log4j`生成的日志上传到`HDFS`
 
     - 参数: 无
+
 
 - `/api/mapred`
 
@@ -501,6 +563,7 @@ Hive Result 4
       | 字段 | 描述 | 类型   |
       | ---- | ---- | ------ |
       | input | HDFS需要分析的文件路径 | string |
+
 
 - `/api/sqoop`
 
