@@ -12,7 +12,7 @@ import niit.start.entity.hive.HResult4;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/chart")
 public class HResultController4 {
     @Resource(name = "HResultRepository4")
     private HResultRepository4 HResultRepository4;

@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/chart")
 public class MResultController {
     @Resource
     private MResultRepository MResultRepository;
