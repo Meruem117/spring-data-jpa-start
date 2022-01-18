@@ -4,9 +4,9 @@ Demo project for spring data jpa
 
 **关联项目**
 
-[Vue前端(待优化)](https://github.com/Meruem117/vite_vue3_start)
+[Vue前端](https://github.com/Meruem117/vite_vue3_start)
 
-[React前端(前端完成，后台图表正在进行)](https://github.com/Meruem117/react_ant_start)
+[React前端](https://github.com/Meruem117/react_ant_start)
 
 [爬虫](https://github.com/Meruem117/bilibili_spider)
 
@@ -344,21 +344,21 @@ Demo project for spring data jpa
 [传送门](https://github.com/Meruem117/mapreduce_count_text)
 
 
-- `/api/getMResult`
+- `/chart/getMResult`
 
     - 描述: 获取分析后的所有结果
 
     - 参数: 无
 
 
-- `/api/getDistinctTm`
+- `/chart/getDistinctTm`
 
     - 描述: 获取分析后的不同的时间(yyyy-mm-dd)
 
     - 参数: 无
 
 
-- `/api/getMResultByType`
+- `/chart/getMResultByType`
 
     - 描述: 根据类型获取分析结果
 
@@ -369,7 +369,7 @@ Demo project for spring data jpa
       | type   | 结果类型(1:up主,2:bv号,3:用户地区) | number |
 
 
-- `/api/getMResultByTypeAndTm`
+- `/chart/getMResultByTypeAndTm`
 
     - 描述: 根据类型和时间获取分析结果
 
@@ -381,7 +381,7 @@ Demo project for spring data jpa
       | tm   | 时间(yyyy-MM-dd) | string |
 
 
-- `/api/getMResultByNameAndTm`
+- `/chart/getMResultByNameAndTm`
 
     - 描述: 根据名称和时间获取分析结果
 
@@ -410,28 +410,28 @@ Demo project for spring data jpa
 [传送门](https://github.com/Meruem117/vite_vue3_start/blob/main/src/assets/Hive.md)
 
 
-- `/api/getHResult1`
+- `/chart/getHResult1`
 
     - 描述: 获取每年视频数
 
     - 参数: 无
 
 
-- `/api/getHResult2`
+- `/chart/getHResult2`
 
     - 描述: 获取每个作者不同时间(yyyy-mm)的视频数
 
     - 参数: 无
 
 
-- `/api/getHResult3`
+- `/chart/getHResult3`
 
     - 描述: 获取综合评分前40的视频列表
 
     - 参数: 无
 
 
-- `/api/getHResult4`
+- `/chart/getHResult4`
 
     - 描述: 获取播放破千万的视频列表
 
@@ -493,7 +493,7 @@ Hive Result 4
 > 生成日志
 
 
-- `/api/generateLog`
+- `/log/generateLog`
 
     - 描述: 批量生成日志
 
@@ -504,7 +504,7 @@ Hive Result 4
       | n   | 生成日志数 | number |
 
 
-- `/api/addLog`
+- `/log/addLog`
 
     - 描述: 记录一条日志
 
@@ -525,7 +525,7 @@ Hive Result 4
 > 与Linux虚拟机连接，并执行命令
 
 
-- `/api/ls`
+- `/log/ls`
 
     - 描述: 执行`ls`
 
@@ -536,7 +536,7 @@ Hive Result 4
       | path | 虚拟机路径 | string |
 
 
-- `/api/dfsls`
+- `/log/dfsls`
 
     - 描述: 执行`hdfs dfs -ls`
 
@@ -547,14 +547,14 @@ Hive Result 4
       | path | Hadoop路径 | string |
 
 
-- `/api/flume`
+- `/log/flume`
 
     - 描述: 执行flume命令，将`log4j`生成的日志上传到`HDFS`
 
     - 参数: 无
 
 
-- `/api/mapred`
+- `/log/mapred`
 
     - 描述: 执行mapreduce程序
 
@@ -565,7 +565,7 @@ Hive Result 4
       | input | HDFS需要分析的文件路径 | string |
 
 
-- `/api/sqoop`
+- `/log/sqoop`
 
     - 描述: 执行sqoop命令，将mapreduce分析结果导出到mysql
 
