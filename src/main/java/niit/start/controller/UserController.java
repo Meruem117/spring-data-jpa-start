@@ -50,22 +50,33 @@ public class UserController {
 
     @GetMapping("/exist")
     @ResponseBody
-    public boolean existsByName(@RequestParam("name") String name) {
-        boolean res = UserRepository.existsByName(name);
+    public Boolean existsByName(@RequestParam("name") String name) {
+        Boolean res = UserRepository.existsByName(name);
         return res;
     }
 
     @PostMapping("/check")
     @ResponseBody
-    public boolean checkUser(@RequestBody User user) {
+    public Boolean checkUser(@RequestBody User user) {
         String name = user.getName();
         String password = user.getPassword();
         return Objects.equals(password, UserRepository.getUserByName(name).getPassword());
     }
 
+    @PostMapping("/login")
+    @ResponseBody
+    public User loginUser(@RequestBody User user) {
+        String name = user.getName();
+        String password = user.getPassword();
+        if (Objects.equals(password, UserRepository.getUserByName(name).getPassword())) {
+            return UserRepository.getUserByName(name);
+        }
+        return null;
+    }
+
     @PostMapping("/add")
     @ResponseBody
-    public int addUser(@RequestBody User user) {
+    public Integer addUser(@RequestBody User user) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String date = df.format(new Date());
         user.setCreated(date);
@@ -75,14 +86,14 @@ public class UserController {
 
     @PostMapping("/update")
     @ResponseBody
-    public int updateUser(@RequestBody User user) {
+    public Integer updateUser(@RequestBody User user) {
         UserRepository.save(user);
         return user.getId();
     }
 
     @PostMapping("/delete")
     @ResponseBody
-    public int deleteUser(@RequestBody int id) {
+    public Integer deleteUser(@RequestBody int id) {
         UserRepository.deleteUserById(id);
         return id;
     }
